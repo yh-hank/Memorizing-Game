@@ -1,0 +1,97 @@
+#cards {
+    display: flex;
+    flex-wrap: wrap; /* 追加 產生卡片後希望每13張就換一行*/
+    width: 85%;
+    margin: 0 auto;
+  }
+  .card {
+    /* 卡片在牌桌上的排版 維持 4 * 13 的牌桌佈局*/
+    /* flex-basis、flex-grow、flex-shrink 縮寫設定:每個總值的7% 空間有剩時不分配 空間不夠元素縮放值 設定 1，想讓元素等比例收縮；如果設定比 1 更高的數字，代表要深入控制每個元素的收縮比例*/
+    flex: 7% 1 1;  /* 修改：卡片需要分配剩餘空間 */
+    height: 8vw; /* 相對單位 依視窗的寬度等比例變化 */
+    border: 2px solid #e0e0e0;
+    margin: 2px; /* 卡片邊距 */
+    box-sizing: border-box; /* 設定 box-sizing*/
+    /* 卡片內部元件排版 */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+  }
+  .card img {
+    max-width: 30%;
+    align-self: center;
+  }
+  .card p {
+    margin: 3px;
+    font-size: 10px;
+  }
+  .card p:last-child {
+    transform: rotate(180deg);
+  }
+  .back {
+    background-image: url('https://assets-lighthouse.alphacamp.co/uploads/image/file/9222/ExportedContentImage_00.png');
+    background-size: cover;
+  }
+  .paired {
+    background-color: #dae0e3;
+  }
+  #header {
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 85%;
+  }
+  #header .title {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+  #header .title img {
+    max-width: 3em;
+  }
+  #header .title h2 {
+    padding-left: 0.5em;
+  }
+  #header .score {
+    margin: 0;
+    color: #6c90ac;
+  }
+  #header .tried {
+    margin-top: 0;
+  }
+  /* 在js動態載入wrong */
+  .wrong {
+    animation-name: wrongAnimation;/* wrongAnimation動畫名稱 */
+    animation-duration: 0.2s;/* 持續 0.2 秒 */
+    animation-iteration-count: 5;/* 重覆 5 次 */
+  }
+    /* 關鍵影格 @keyframes 來設定動畫的漸變流程
+      to 來指定動畫漸變起點/終點
+    */
+  @keyframes wrongAnimation {
+    to {
+      border: 2px solid #ffd54f;
+    }
+  }
+  /** Game finished **/
+.completed {
+  position: absolute;
+  z-index: 999;
+  top: 33vh;
+  background-color: RGBA(232, 246, 254, 0.8);
+  width: 100vw;
+  padding: 50px 0;
+}
+.completed > p {
+  font-size: 1.5em;
+  color: black;
+  text-align: center;
+  margin: 0;
+}
+.completed > p:first-child {
+  font-size: 3em;
+  font-weight: 700;
+  color: #758d9a;
+}
